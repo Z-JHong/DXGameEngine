@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source\Runtime">
+      <UniqueIdentifier>{f2f14d92-b430-47b6-aaf3-9728d5ddd12c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Runtime\Lanucher">
+      <UniqueIdentifier>{4989d53d-9ac7-4338-812c-c73d6c462cf0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Developer">
+      <UniqueIdentifier>{5aaa48c0-bfd7-462d-a80a-fbe41e7b25a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Developer\Utility">
+      <UniqueIdentifier>{a3fbcd04-734b-4485-a069-13cc605fde39}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Developer\Utility\Console">
+      <UniqueIdentifier>{470fcee5-dfa3-4e68-ab1a-7f1df192035c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Runtime\Engine">
+      <UniqueIdentifier>{d163143e-18d1-4cf0-9fa7-798afed71a53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Runtime\Engine\Application">
+      <UniqueIdentifier>{a16d235e-d9e7-4a43-83eb-c4067abdd69f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\Runtime\Lanucher\WindowsLauncher.cpp">
+      <Filter>Source\Runtime\Lanucher</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Runtime\Engine\Application\EngineApplication.cpp">
+      <Filter>Source\Runtime\Engine\Application</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Source\Runtime\Engine\Application\EngineApplication.h">
+      <Filter>Source\Runtime\Engine\Application</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
