@@ -1,4 +1,5 @@
 #include "EngineApplication.h"
+#include "Runtime/Engine/World/FrostbiteWorld.h"
 #include "Runtime/Render/DirectXRHI.h"
 
 FrostbiteEngineApplication* FrostbiteEngineApplication::EngineApplication = nullptr;
@@ -6,6 +7,8 @@ FrostbiteEngineApplication* FrostbiteEngineApplication::EngineApplication = null
 FrostbiteEngineApplication::FrostbiteEngineApplication()
 {
 	EngineRenderRHI = new DirectXRHI();
+
+	FrostbiteEngineWorld = new FrostbiteWorld(this);
 }
 
 bool FrostbiteEngineApplication::InitEngineInstance(HINSTANCE IN_hInstance)
@@ -15,9 +18,20 @@ bool FrostbiteEngineApplication::InitEngineInstance(HINSTANCE IN_hInstance)
 
 	bool bCreateEngineWindowsSuccessful = this->CreateEngineInstanceWindow();
 
+
 	if (bCreateEngineWindowsSuccessful)
 	{
-		EngineRenderRHI->InitEngineRHI(this->EngineInstanceMainWnd);
+		//初始化世界：
+		if (this->FrostbiteEngineWorld != nullptr)
+		{
+			this->FrostbiteEngineWorld->CreateWorldCurrentLevel("EngineLevel", "GameInsBoxLevelPrivew");
+
+			this->FrostbiteEngineWorld->InitializeFrostbiteWorld(this->EngineInstanceMainWnd);
+		}
+	}
+	else
+	{
+		return false;
 	}
 
 	return true;
@@ -31,6 +45,11 @@ FrostbiteEngineApplication* FrostbiteEngineApplication::GetEngineApplicationInst
 	}
 
 	return new FrostbiteEngineApplication();
+}
+
+RenderHardwareInterface* FrostbiteEngineApplication::GetEngineRenderHardwareInterface()
+{
+	return this->EngineRenderRHI;
 }
 
 int FrostbiteEngineApplication::EngineInstanceTick()
@@ -47,10 +66,9 @@ int FrostbiteEngineApplication::EngineInstanceTick()
 		}
 		else
 		{
-			if (this->EngineRenderRHI != nullptr)
+			if (this->FrostbiteEngineWorld != nullptr)
 			{
-				this->EngineRenderRHI->UpdateEngineRHI();
-				this->EngineRenderRHI->DrawEngineRHI();
+				this->FrostbiteEngineWorld->FrostbiteWorldTick();
 			}
 		}
 	}

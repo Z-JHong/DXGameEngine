@@ -1,7 +1,5 @@
 #pragma once
-
-#include "Windows.h"
-
+#include "Runtime/Core/CoreMinimal.h"
 
 class FrostbiteEngineApplication
 {
@@ -11,6 +9,11 @@ private:
 	static FrostbiteEngineApplication* EngineApplication;
 
 	FrostbiteEngineApplication();
+
+protected:
+
+	// ¿ΩÁ£∫
+	class FrostbiteWorld* FrostbiteEngineWorld;
 
 private:
 
@@ -26,6 +29,7 @@ public:
 
 	static FrostbiteEngineApplication* GetEngineApplicationInstance();
 
+	class RenderHardwareInterface* GetEngineRenderHardwareInterface();
 
 	virtual int EngineInstanceTick();
 

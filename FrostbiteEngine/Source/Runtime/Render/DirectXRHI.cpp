@@ -2,26 +2,26 @@
 #include "Windows.h"
 
 //初始化DX的RHI：
-void DirectXRHI::InitEngineRHI(HWND IN_HWnd)
+bool DirectXRHI::InitEngineRHI(HWND IN_HWnd)
 {
 	//赋值：
 	this->pFEDXRHIMainWnd = IN_HWnd;
 
 	//初始化DX：
-	this->InitDefaultDirectX3D();
+	return this->InitDefaultDirectX3D();
 }
 
-void DirectXRHI::UpdateEngineRHI()
+bool DirectXRHI::UpdateEngineRHI()
 {
-
+	return true;
 }
 
-void DirectXRHI::DrawEngineRHI()
+bool DirectXRHI::DrawEngineRHI()
 {
-
+	return true;
 }
 
-void DirectXRHI::InitDefaultDirectX3D()
+bool DirectXRHI::InitDefaultDirectX3D()
 {
 
 	//01.打开DX3D调试层:
@@ -38,13 +38,13 @@ void DirectXRHI::InitDefaultDirectX3D()
 
 #endif
 
-
 	//02.创建DXFactory工厂对象：
 	HRESULT CreateFactoryObject = CreateDXGIFactory1(IID_PPV_ARGS(&this->pFEDXGIFactory));
 
 	if(FAILED(CreateFactoryObject))
 	{
 		//Log:
+		return false;
 	}
 
 	//03.创建DX设备对象：
@@ -71,6 +71,7 @@ void DirectXRHI::InitDefaultDirectX3D()
 	if(FAILED(CreateDXDevice))
 	{
 		//Log:
+		return false;
 	}
 
 
@@ -126,6 +127,7 @@ void DirectXRHI::InitDefaultDirectX3D()
 	if (FAILED(CreateCMDQueue))
 	{
 		//Log:
+		return false;
 	}
 
 	HRESULT CreateCMDListAlloc = this->pFED3D12Device->CreateCommandAllocator(D3D12_COMMAND_LIST_TYPE_DIRECT,IID_PPV_ARGS(this->pFEDirectCmdListAlloc.GetAddressOf()));
@@ -133,6 +135,7 @@ void DirectXRHI::InitDefaultDirectX3D()
 	if (FAILED(CreateCMDListAlloc))
 	{
 		//Log:
+		return false;
 	}
 
 	this->pFED3D12Device->CreateCommandList(0, D3D12_COMMAND_LIST_TYPE_DIRECT, this->pFEDirectCmdListAlloc.Get(), nullptr, IID_PPV_ARGS(this->pFECommandList.GetAddressOf()));
@@ -167,6 +170,7 @@ void DirectXRHI::InitDefaultDirectX3D()
 	if (FAILED(CreateSpawnChain))
 	{
 		//Log:
+		return false;
 	}
 
 	//08.创建描述符堆
@@ -181,6 +185,7 @@ void DirectXRHI::InitDefaultDirectX3D()
 	if (FAILED(CreateRTVHeap))
 	{
 		//Log:
+		return false;
 	}
 
 	D3D12_DESCRIPTOR_HEAP_DESC dsvHeapDesc;
@@ -195,6 +200,7 @@ void DirectXRHI::InitDefaultDirectX3D()
 	if (FAILED(CreateDSVHeap))
 	{
 		//Log:
+		return false;
 	}
 
 	//在改变任何资源之前需要刷新命令队列：
@@ -231,6 +237,9 @@ void DirectXRHI::InitDefaultDirectX3D()
 
 	//12.设置裁剪矩形
 	this->pFEScissorRect = { 0, 0, this->pFEClientWidth, this->pFEClientHeight };
+
+
+	return true;
 
 }
 
@@ -372,8 +381,6 @@ void DirectXRHI::FlushCommandQueue()
 			}
 		}
 	}
-
-
 }
 
 void DirectXRHI::ExecuteCommandQueue()
@@ -392,4 +399,43 @@ void DirectXRHI::ExecuteCommandQueue()
 			this->pFECMDQueue->ExecuteCommandLists(_countof(cmdsLists), cmdsLists);
 		}
 	}
+}
+
+void DirectXRHI::ResizeEngineWindow()
+{
+	//在改变任何资源之前需要刷新命令队列：
+	this->FlushCommandQueue();
+
+	this->ResetGraphicsCommandList();
+
+	//09.创建渲染目标视图
+
+	//10.创建深度/模板缓冲区及其视图
+
+	//创建模板缓冲：
+	this->CreateRenderTargetViewportResoureces();
+
+	//创建深度缓冲：
+	this->CreateDepthStencilResources();
+
+
+	// Execute the resize commands.
+	this->ExecuteCommandQueue();
+
+	// Wait until resize is complete.
+	this->FlushCommandQueue();
+
+
+	//11.设置视口
+	// Update the viewport transform to cover the client area.
+	this->pFEScreenViewport.TopLeftX = 0;
+	this->pFEScreenViewport.TopLeftY = 0;
+	this->pFEScreenViewport.Width = static_cast<float>(this->pFEClientWidth);
+	this->pFEScreenViewport.Height = static_cast<float>(this->pFEClientHeight);
+	this->pFEScreenViewport.MinDepth = 0.0f;
+	this->pFEScreenViewport.MaxDepth = 1.0f;
+
+	//12.设置裁剪矩形
+	this->pFEScissorRect = { 0, 0, this->pFEClientWidth, this->pFEClientHeight };
+
 }

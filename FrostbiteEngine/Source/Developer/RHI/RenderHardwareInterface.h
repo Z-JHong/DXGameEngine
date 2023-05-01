@@ -8,10 +8,10 @@ class RenderHardwareInterface
 
 public:
 
-	virtual void InitEngineRHI(HWND IN_HWnd ) = 0;
+	virtual bool InitEngineRHI(HWND IN_HWnd ) = 0;
 
-	virtual void UpdateEngineRHI() = 0;
+	virtual bool UpdateEngineRHI() = 0;
 
-	virtual void DrawEngineRHI() = 0;
+	virtual bool DrawEngineRHI() = 0;
 };
 

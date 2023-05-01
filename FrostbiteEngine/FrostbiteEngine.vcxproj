@@ -146,17 +146,26 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Source\Developer\RHI\RenderHardwareInterface.cpp" />
+    <ClCompile Include="Source\Developer\RHI\Vertex\RHIVertex.cpp" />
     <ClCompile Include="Source\Runtime\Engine\Application\EngineApplication.cpp" />
+    <ClCompile Include="Source\Runtime\Engine\Level\FrostbiteLevel.cpp" />
+    <ClCompile Include="Source\Runtime\Engine\World\FrostbiteWorld.cpp" />
     <ClCompile Include="Source\Runtime\Lanucher\WindowsLauncher.cpp" />
     <ClCompile Include="Source\Runtime\Render\DirectXRHI.cpp" />
+    <ClCompile Include="Source\ZProjectGame\GameIns01_BoxLevel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Developer\RHI\RenderHardwareInterface.h" />
+    <ClInclude Include="Source\Developer\RHI\Vertex\RHIVertex.h" />
     <ClInclude Include="Source\Developer\Utility\Render\RenderUtility.h" />
     <ClInclude Include="Source\Runtime\Core\CoreMinimal.h" />
     <ClInclude Include="Source\Runtime\Core\EngineType\EngineType.h" />
     <ClInclude Include="Source\Runtime\Engine\Application\EngineApplication.h" />
+    <ClInclude Include="Source\Runtime\Engine\Level\FrostbiteLevel.h" />
+    <ClInclude Include="Source\Runtime\Engine\World\FrostbiteWorld.h" />
     <ClInclude Include="Source\Runtime\Render\DirectXRHI.h" />
+    <ClInclude Include="Source\ZProjectGame\GameIns01_BoxLevel.h" />
+    <ClInclude Include="Source\ZProjectGame\ProjectInstanceLevel.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

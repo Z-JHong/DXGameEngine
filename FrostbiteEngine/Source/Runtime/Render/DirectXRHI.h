@@ -1,8 +1,7 @@
 #pragma once
 
 #include "Developer/RHI/RenderHardwareInterface.h"
-#include "Runtime/Core/EngineType/EngineType.h"
-#include <windows.h>
+#include "Runtime/Core/CoreMinimal.h"
 #include <tchar.h>
 #include <strsafe.h>
 #include <dxgi1_6.h>
@@ -30,16 +29,15 @@ class DirectXRHI :public RenderHardwareInterface
 
 public:
 
-	void InitEngineRHI(HWND IN_HWnd) override;
+	virtual bool InitEngineRHI(HWND IN_HWnd) override;
 
+	virtual bool UpdateEngineRHI() override;
 
-	void UpdateEngineRHI() override;
-
-	void DrawEngineRHI() override;
+	virtual bool DrawEngineRHI() override;
 
 protected:
 
-	void InitDefaultDirectX3D();
+	bool InitDefaultDirectX3D();
 
 	//重置交换链资源：
 	virtual void ResetRHISwapChainResources();
@@ -62,6 +60,11 @@ public:
 
 	//执行命令队列：
 	virtual void ExecuteCommandQueue();
+
+
+public:
+
+	virtual void ResizeEngineWindow();
 
 private:
 

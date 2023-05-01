@@ -38,6 +38,21 @@
     <Filter Include="Source\Runtime\Core\EngineType">
       <UniqueIdentifier>{e55ae82b-2765-43ec-a626-1e089f5130ff}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Developer\RHI\Vertex">
+      <UniqueIdentifier>{b417a801-db1f-4af4-af53-c66757ee2352}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\ZProjectGame">
+      <UniqueIdentifier>{7cfb264b-30b6-4169-a7f7-6ef5cd9e62d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\ZProjectGame\01-BoxLevel">
+      <UniqueIdentifier>{129e0c84-a909-4e8e-82e3-0ed61cb154bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Runtime\Engine\Level">
+      <UniqueIdentifier>{f912bd12-a1ee-4085-8387-7dd85b3f1da1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Runtime\Engine\World">
+      <UniqueIdentifier>{688a859f-362d-4be4-82d2-e3b90a069130}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Runtime\Lanucher\WindowsLauncher.cpp">
@@ -51,6 +66,18 @@
     </ClCompile>
     <ClCompile Include="Source\Developer\RHI\RenderHardwareInterface.cpp">
       <Filter>Source\Developer\RHI</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Developer\RHI\Vertex\RHIVertex.cpp">
+      <Filter>Source\Developer\RHI\Vertex</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Runtime\Engine\Level\FrostbiteLevel.cpp">
+      <Filter>Source\Runtime\Engine\Level</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Runtime\Engine\World\FrostbiteWorld.cpp">
+      <Filter>Source\Runtime\Engine\World</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ZProjectGame\GameIns01_BoxLevel.cpp">
+      <Filter>Source\ZProjectGame\01-BoxLevel</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -71,6 +98,21 @@
     </ClInclude>
     <ClInclude Include="Source\Developer\Utility\Render\RenderUtility.h">
       <Filter>Source\Developer\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Developer\RHI\Vertex\RHIVertex.h">
+      <Filter>Source\Developer\RHI\Vertex</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Runtime\Engine\Level\FrostbiteLevel.h">
+      <Filter>Source\Runtime\Engine\Level</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Runtime\Engine\World\FrostbiteWorld.h">
+      <Filter>Source\Runtime\Engine\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ZProjectGame\GameIns01_BoxLevel.h">
+      <Filter>Source\ZProjectGame\01-BoxLevel</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ZProjectGame\ProjectInstanceLevel.h">
+      <Filter>Source\ZProjectGame</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
