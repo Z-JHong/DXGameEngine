@@ -15,7 +15,10 @@ private:
 private:
 
 	HINSTANCE EngineInstance;
-	HWND      EngineInstanceMainWnd = nullptr; 
+	HWND      EngineInstanceMainWnd = nullptr;
+
+	//RHI:
+	class RenderHardwareInterface* EngineRenderRHI;
 
 public:
 

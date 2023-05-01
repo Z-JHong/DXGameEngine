@@ -1,10 +1,11 @@
 #include "EngineApplication.h"
+#include "Runtime/Render/DirectXRHI.h"
 
 FrostbiteEngineApplication* FrostbiteEngineApplication::EngineApplication = nullptr;
 
 FrostbiteEngineApplication::FrostbiteEngineApplication()
 {
-
+	EngineRenderRHI = new DirectXRHI();
 }
 
 bool FrostbiteEngineApplication::InitEngineInstance(HINSTANCE IN_hInstance)
@@ -12,7 +13,12 @@ bool FrostbiteEngineApplication::InitEngineInstance(HINSTANCE IN_hInstance)
 	//初始化引擎实例：
 	this->EngineInstance = IN_hInstance;
 
-	this->CreateEngineInstanceWindow();
+	bool bCreateEngineWindowsSuccessful = this->CreateEngineInstanceWindow();
+
+	if (bCreateEngineWindowsSuccessful)
+	{
+		EngineRenderRHI->InitEngineRHI(this->EngineInstanceMainWnd);
+	}
 
 	return true;
 }
@@ -29,7 +35,7 @@ FrostbiteEngineApplication* FrostbiteEngineApplication::GetEngineApplicationInst
 
 int FrostbiteEngineApplication::EngineInstanceTick()
 {
-	MSG msg = { 0 };
+	MSG msg = {0};
 
 	while (msg.message != WM_QUIT)
 	{
@@ -39,7 +45,14 @@ int FrostbiteEngineApplication::EngineInstanceTick()
 			TranslateMessage(&msg);
 			DispatchMessage(&msg);
 		}
-		
+		else
+		{
+			if (this->EngineRenderRHI != nullptr)
+			{
+				this->EngineRenderRHI->UpdateEngineRHI();
+				this->EngineRenderRHI->DrawEngineRHI();
+			}
+		}
 	}
 
 	return (int)msg.wParam;
@@ -49,9 +62,9 @@ LRESULT CALLBACK EngineApplicationProc(HWND hwnd, UINT msg, WPARAM wParam, LPARA
 {
 	switch (msg)
 	{
-		case WM_DESTROY:
-			PostQuitMessage(0);
-			return 0;
+	case WM_DESTROY:
+		PostQuitMessage(0);
+		return 0;
 	}
 
 	return DefWindowProc(hwnd, msg, wParam, lParam);
@@ -78,7 +91,7 @@ bool FrostbiteEngineApplication::CreateEngineInstanceWindow()
 	}
 
 	// Compute window rectangle dimensions based on requested client area dimensions.
-	RECT R = { 0, 0, 1280, 720 };
+	RECT R = {0, 0, 1280, 720};
 
 	AdjustWindowRect(&R, WS_OVERLAPPEDWINDOW, false);
 	int width = R.right - R.left;

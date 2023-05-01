@@ -83,7 +83,7 @@
     <IntDir>.\Intermediate\Build\Win64</IntDir>
     <TargetName>FBEngine</TargetName>
     <ExecutablePath>E:\01.WorkingProject\02.Microsoft Visual Studio\FrostbiteEngine\FrostbiteEngine\Source;$(ExecutablePath)</ExecutablePath>
-    <IncludePath>E:\01.WorkingProject\02.Microsoft Visual Studio\FrostbiteEngine\FrostbiteEngine\Source;$(IncludePath)</IncludePath>
+    <IncludePath>E:\01.WorkingProject\02.Microsoft Visual Studio\FrostbiteEngine\FrostbiteEngine\Source;E:\01.WorkingProject\02.Microsoft Visual Studio\FrostbiteEngine\FrostbiteEngine\Extras\DX12;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -145,11 +145,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Developer\RHI\RenderHardwareInterface.cpp" />
     <ClCompile Include="Source\Runtime\Engine\Application\EngineApplication.cpp" />
     <ClCompile Include="Source\Runtime\Lanucher\WindowsLauncher.cpp" />
+    <ClCompile Include="Source\Runtime\Render\DirectXRHI.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Developer\RHI\RenderHardwareInterface.h" />
+    <ClInclude Include="Source\Developer\Utility\Render\RenderUtility.h" />
+    <ClInclude Include="Source\Runtime\Core\CoreMinimal.h" />
+    <ClInclude Include="Source\Runtime\Core\EngineType\EngineType.h" />
     <ClInclude Include="Source\Runtime\Engine\Application\EngineApplication.h" />
+    <ClInclude Include="Source\Runtime\Render\DirectXRHI.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

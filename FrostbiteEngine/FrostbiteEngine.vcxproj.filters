@@ -26,6 +26,18 @@
     <Filter Include="Source\Runtime\Engine\Application">
       <UniqueIdentifier>{a16d235e-d9e7-4a43-83eb-c4067abdd69f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Runtime\Render">
+      <UniqueIdentifier>{e105fecc-623c-48a5-9bd4-c179751d0191}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Developer\RHI">
+      <UniqueIdentifier>{99666502-544e-470e-9199-f504244740eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Runtime\Core">
+      <UniqueIdentifier>{1b7b80d2-b545-4b5c-a701-cb2f646357a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Runtime\Core\EngineType">
+      <UniqueIdentifier>{e55ae82b-2765-43ec-a626-1e089f5130ff}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Runtime\Lanucher\WindowsLauncher.cpp">
@@ -34,10 +46,31 @@
     <ClCompile Include="Source\Runtime\Engine\Application\EngineApplication.cpp">
       <Filter>Source\Runtime\Engine\Application</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Runtime\Render\DirectXRHI.cpp">
+      <Filter>Source\Runtime\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Developer\RHI\RenderHardwareInterface.cpp">
+      <Filter>Source\Developer\RHI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Runtime\Engine\Application\EngineApplication.h">
       <Filter>Source\Runtime\Engine\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Runtime\Render\DirectXRHI.h">
+      <Filter>Source\Runtime\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Developer\RHI\RenderHardwareInterface.h">
+      <Filter>Source\Developer\RHI</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Runtime\Core\CoreMinimal.h">
+      <Filter>Source\Runtime\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Runtime\Core\EngineType\EngineType.h">
+      <Filter>Source\Runtime\Core\EngineType</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Developer\Utility\Render\RenderUtility.h">
+      <Filter>Source\Developer\Utility</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
