@@ -76,16 +76,14 @@ int FrostbiteEngineApplication::EngineInstanceTick()
 	return (int)msg.wParam;
 }
 
+FrostbiteWorld* FrostbiteEngineApplication::GetApplicationWorld()
+{
+	return this->FrostbiteEngineWorld;
+}
+
 LRESULT CALLBACK EngineApplicationProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
-	switch (msg)
-	{
-	case WM_DESTROY:
-		PostQuitMessage(0);
-		return 0;
-	}
-
-	return DefWindowProc(hwnd, msg, wParam, lParam);
+	return FrostbiteEngineApplication::GetEngineApplicationInstance()->GetApplicationWorld()->FrostbiteWorldProc(hwnd, msg, wParam, lParam);
 }
 
 bool FrostbiteEngineApplication::CreateEngineInstanceWindow()

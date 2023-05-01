@@ -21,6 +21,10 @@ public:
 
 	virtual void DrawFrostbiteLevel();
 
+public:
+
+	virtual LRESULT CALLBACK FrostbiteLevelInputProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
+
 protected:
 
 	FEString LevelName;

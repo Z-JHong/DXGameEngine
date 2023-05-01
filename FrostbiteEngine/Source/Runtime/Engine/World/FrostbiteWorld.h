@@ -34,6 +34,8 @@ public:
 	//Tick£º
 	virtual void FrostbiteWorldTick();
 
+	virtual LRESULT CALLBACK FrostbiteWorldProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
+
 private:
 
 	//ÊµÀý¶ÔÏó£º

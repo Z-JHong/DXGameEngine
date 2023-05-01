@@ -77,3 +77,8 @@ void FrostbiteWorld::FrostbiteWorldTick()
 	this->DrawFrostbiteWorld();
 
 }
+
+LRESULT FrostbiteWorld::FrostbiteWorldProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
+{
+	return this->CurrentLevel->FrostbiteLevelInputProc(hwnd, msg, wParam, lParam);
+}

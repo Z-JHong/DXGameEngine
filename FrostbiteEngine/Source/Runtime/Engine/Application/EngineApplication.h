@@ -33,6 +33,8 @@ public:
 
 	virtual int EngineInstanceTick();
 
+	class FrostbiteWorld* GetApplicationWorld();
+
 private:
 
 	bool CreateEngineInstanceWindow();
